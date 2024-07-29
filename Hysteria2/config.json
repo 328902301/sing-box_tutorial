@@ -1,1 +1,40 @@
-1
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "inbounds": [
+    {
+      "type": "hysteria2",
+      "tag": "hy2-in",
+      "listen": "::",
+      "listen_port": 443,    //监听端口
+      "up_mbps": 500,        //上行速率
+      "down_mbps": 500,      //下行速率
+      "users": [
+        {
+          "password": "goofy_ahh_password"    //用户认证密码，可通过 openssl rand -base64 12 随机生成
+        }
+      ],
+      "ignore_client_bandwidth": false,     //若为 true 客户端使用 BBR 拥塞控制算法，若为 false 客户端使用 Hysteria CC，若为 true 则取消 up_mbps 和 down_mbps 配置
+      "masquerade": "https://www.bing.com",   //反代网站
+      "tls": {
+        "enabled": true,
+        "alpn": ["h3"],
+        "certificate_path": "/etc/ssl/private/cert.crt",
+        "key_path": "/etc/ssl/private/private.key"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ]
+}

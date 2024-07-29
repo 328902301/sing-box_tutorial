@@ -1,0 +1,20 @@
+{
+  "server": "domain.com:10010,20000-40000",   //域名：监听端口，端口跳跃范围
+  "auth": "31abu73z5dtu",     //用户认证密码
+  "bandwidth": {
+    "up": "200 mbps",    //上行速率
+    "down": "500 mbps"   //下行速率
+  },
+  "transport": {
+    "type": "udp",
+    "hopInterval": "30s"   //端口跳跃间隔时间
+  },
+  "fastOpen": true,
+  "lazy": true,
+  "socks5": {
+    "listen": "127.0.0.1:1080"
+  },
+  "http": {
+    "listen": "127.0.0.1:8080"
+  }
+}
